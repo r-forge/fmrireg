@@ -1,0 +1,19 @@
+Package: neuroim
+Type: Package
+Title: neuroim: R software for reading, writing and representing brain
+    imaging data
+Version: 0.0.1
+Date: 2010-11-04
+Author: Bradley Buchsbaum
+License: GPL (>= 2)
+Maintainer: Bradley Buchsbaum <bbuchsbaum@rotman-baycrest.on.ca>
+Description: neuroim is a collection of data structures that represent
+    volumetric brain imaging data. In addition, there are function to
+    read and write ANALYZE7.5 and NIFTI files.
+Depends: R (>= 2.10.0), stats, methods, stringr, yaImpute, abind
+Imports: graphics, grid, stats
+Collate: 'AFNI_IO.R' 'AllGeneric.R' 'AllClass.R' 'Axis.R' 'BinaryIO.R'
+    'BrainData.R' 'common.R' 'NIFTI_IO.R' 'BrainFileDescriptor.R'
+    'BrainMetaInfo.R' 'BrainRegion3D.R' 'BrainSlice.R' 'BrainSpace.R'
+    'SparseBrainVector.R' 'BrainVector.R' 'BrainVolume.R' 'conncomp.R'
+    'IndexLookupVolume.R' 'neuroim-package.R' 'Ops.R'

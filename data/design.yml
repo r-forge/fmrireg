@@ -1,0 +1,61 @@
+Design:
+  base-path: /Users/brad/data2/video_pilot/1008
+  subject-id: 1008
+  image-data:
+    path: epi
+    TR: 1.37
+    block-lengths: [ 276, 276, 276, 276, 276, 276, 276, 276, 276 ]
+    block-ids: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    images:
+    - rscan001.nii
+    - rscan002.nii
+    - rscan003.nii
+    - rscan004.nii
+    - rscan005.nii
+    - rscan006.nii
+    - rscan007.nii
+    - rscan008.nii
+    - rscan009.nii
+  event-table:
+      path: behavior/design.txt
+      table-header:
+          factors:
+              - Video
+              - run
+          continuous:
+              - repnum
+          onsets: Onset
+          block-id: run
+  covariates:
+      name: Motion
+      path: epi
+      files:
+      - PCNuisance_rscan001.txt
+      - PCNuisance_rscan002.txt
+      - PCNuisance_rscan003.txt
+      - PCNuisance_rscan004.txt
+      - PCNuisance_rscan005.txt
+      - PCNuisance_rscan006.txt
+      - PCNuisance_rscan007.txt
+      - PCNuisance_rscan008.txt
+      - PCNuisance_rscan009.txt
+      name: Noise:
+      path: epi
+      files:
+      - MotNuisance_rscan001.txt
+      - MotNuisance_rscan002.txt
+      - MotNuisance_rscan003.txt
+      - MotNuisance_rscan004.txt
+      - MotNuisance_rscan005.txt
+      - MotNuisance_rscan006.txt
+      - MotNuisance_rscan007.txt
+      - MotNuisance_rscan008.txt
+      - MotNuisance_rscan009.txt
+                                        
+GLM: 
+    name: glm1
+    base-path: /Users/brad/data2/video_pilot/1008
+    mask: epi/global_mask.nii
+    event-model: Onset ~ hrf(Video) + hrf(Video, repnum) 
+    hrf: gamma
+    

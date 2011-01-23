@@ -1,0 +1,31 @@
+library(gtools)
+library(numDeriv)
+library(yaml)
+library(splines)
+library(gregmisc)
+library(gsubfn)
+#library(IRanges)
+
+
+fnames = c("AllGeneric.R",
+  "AllClass.R",
+  "DataSource-methods.R",
+  "EventVector-methods.R",
+  "EventTable-methods.R",
+  "EventModel-methods.R",
+  "FMRIDesign-methods.R",
+  "Regressor-methods.R",
+  "HRF-methods.R",
+  "waver.R",
+  "AFNIStim-methods.R",
+  "afni_decon.R",
+  "ConvolvedTerm-methods.R",
+  "Condition-methods.R",
+  "Contrast-methods.R")
+
+
+ 
+fnames <- paste("~/Rcode/FMRIDesign/R/", fnames, sep="")
+
+
+lapply(fnames, source)
