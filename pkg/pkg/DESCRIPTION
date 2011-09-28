@@ -1,0 +1,15 @@
+Package: fmrireg
+Type: Package
+Title: fmrireg: R software for regression analysis of fMRI data
+Version: 0.0.1
+Date: 2011-01-22
+Author: Bradley Buchsbaum
+License: GPL (>= 2)
+Maintainer: Bradley Buchsbaum <bbuchsbaum@rotman-baycrest.on.ca>
+Description: fmrireg is a package that facilitatesand simplifies regression analysis with FMRI data
+Depends: R (>= 2.11.0), stats, methods, stringr, yaImpute, abind
+Imports: graphics, grid, stats
+Collate: 'afni_decon.R', 'AFNIStim-methods.R', 'AllClass.R','Contrast-methods.R','ConvolvedTerm-methods.R',
+		 'DataSource-methods.R', 'DesignLoader.R', 'EventModel-methods.R', 'EventTable-methods.R',
+		 'EventVector-methods.R', 'HRF-methods.R', 'Regressor-methods.R', 'waver.R'
+		 

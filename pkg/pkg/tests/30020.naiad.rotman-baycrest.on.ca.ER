@@ -1,0 +1,125 @@
+Loading required package: stringr
+Loading required package: yaImpute
+Loading required package: abind
+Loading required package: gdata
+gdata: read.xls support for 'XLS' (Excel 97-2004) files ENABLED.
+
+gdata: Unable to load perl libaries needed by read.xls()
+gdata: to support 'XLSX' (Excel 2007+) files.
+
+gdata: Run the function 'installXLSXsupport()'
+gdata: to automatically download and install the perl
+gdata: libaries needed to support Excel XLS and XLSX formats.
+
+Attaching package: 'gdata'
+
+The following object(s) are masked from 'package:stats':
+
+    nobs
+
+The following object(s) are masked from 'package:utils':
+
+    object.size
+
+Loading required package: gmodels
+Loading required package: gplots
+Loading required package: gtools
+Loading required package: caTools
+Loading required package: bitops
+Loading required package: grid
+
+Attaching package: 'gplots'
+
+The following object(s) are masked from 'package:neuroim':
+
+    space
+
+The following object(s) are masked from 'package:stats':
+
+    lowess
+
+Warning message:
+
+	The `gregmisc' *package* has converted into a *bundle*
+	containing four sub-packages: gdata, gtools, gmodels, and gplots.
+	Please load these packages directly. 
+Read 1 item
+Read 7 items
+Read 7 items
+Read 7 items
+Read 7 items
+Loading required package: proto
+
+Attaching package: 'gsubfn'
+
+The following object(s) are masked _by_ '.GlobalEnv':
+
+    paste0
+
+Creating a generic for ‘convolve’ in package ‘.GlobalEnv’
+    (the supplied definition differs from and overrides the implicit generic
+    in package ‘stats’: Formal arguments differ: (x, ...), (x, y, conj, type))
+Creating a new generic function for "predict" in ".GlobalEnv"
+Creating a new generic function for "merge" in ".GlobalEnv"
+in method for ‘blockids’ with signature ‘x="EventFunction"’: no definition for class "EventFunction"
+in method for ‘isContinuous’ with signature ‘x="EventFunction"’: no definition for class "EventFunction"
+in method for ‘conditions’ with signature ‘x="EventFunction"’: no definition for class "EventFunction"
+Creating a new generic function for "as.data.frame" in ".GlobalEnv"
+Creating a new generic function for "colnames" in ".GlobalEnv"
+Creating a new generic function for "plot" in ".GlobalEnv"
+Warning message:
+In rep(.SCANS, each = table(.DESIGN$run)) :
+  first element used of 'each' argument
+Loading required package: multicore
+++ 3dDeconvolve: AFNI version=AFNI_2009_12_31_1431 (Feb 20 2010) [32-bit]
+++ Authored by: B. Douglas Ward, et al.
+++ current memory malloc-ated = 1596251 bytes (about 1.6 million)
+++ loading dataset /euterpe/data/brad/projects/words_study/1023/epi/srscan01.nii /euterpe/data/brad/projects/words_study/1023/epi/srscan02.nii /euterpe/data/brad/projects/words_study/1023/epi/srscan03.nii /euterpe/data/brad/projects/words_study/1023/epi/srscan04.nii /euterpe/data/brad/projects/words_study/1023/epi/srscan05.nii /euterpe/data/brad/projects/words_study/1023/epi/srscan06.nii /euterpe/data/brad/projects/words_study/1023/epi/srscan07.nii
+++ current memory malloc-ated = 1629587 bytes (about 1.6 million)
+++ Auto-catenated datasets start at:  0 302 604 906 1208 1510 1812
+++ Input polort=5; Longest run=413.7 s; Recommended minimum polort=3 ++ OK ++
+++ total shared memory needed = 322928640 bytes (about 323 million)
+++ current memory malloc-ated = 1920981 bytes (about 1.9 million)
+++ mmap() memory allocated: 322928640 bytes (about 323 million)
+++ Memory required for output bricks = 322928640 bytes (about 323 million)
+++ Wrote matrix values to file statout.xmat.1D
+++ ========= Things you can do with the matrix file =========
+++ (a) Linear regression with ARMA(1,1) modeling of serial correlation:
+
+3dREMLfit -matrix statout.xmat.1D \
+ -input "/euterpe/data/brad/projects/words_study/1023/epi/srscan01.nii /euterpe/data/brad/projects/words_study/1023/epi/srscan02.nii /euterpe/data/brad/projects/words_study/1023/epi/srscan03.nii /euterpe/data/brad/projects/words_study/1023/epi/srscan04.nii /euterpe/data/brad/projects/words_study/1023/epi/srscan05.nii /euterpe/data/brad/projects/words_study/1023/epi/srscan06.nii /euterpe/data/brad/projects/words_study/1023/epi/srscan07.nii" \
+ -mask /euterpe/data/brad/projects/words_study/1023/epi/global_mask.nii \
+ -Rbeta coefout_REML -tout -Rbuck statout_REML -Rvar statout_REMLvar -verb
+ 
+++ N.B.: 3dREMLfit command above written to file statout.REML_cmd
+++ (b) Visualization/analysis of the matrix via ExamineXmat.R
+++ (c) Synthesis of sub-model datasets using 3dSynthesize
+++ ==========================================================
+++ ----- Signal+Baseline matrix condition [X] (2114x172):  38.0043  ++ GOOD ++
+++ ----- Signal-only matrix condition [X] (2114x130):  7.73585  ++ VERY GOOD ++
+++ ----- Baseline-only matrix condition [X] (2114x42):  1.03639  ++ VERY GOOD ++
+++ ----- polort-only matrix condition [X] (2114x42):  1.03639  ++ VERY GOOD ++
+++ +++++ Matrix inverse average error = 1.27041e-15  ++ VERY GOOD ++
+++ Matrix setup time = 200.13 s
+++ Voxels in dataset: 221184
+++ Voxels in mask:    63278
+++ Voxels per job:    9039
+++ Job #1: processing voxels 51427 to 80205; elapsed time=245.627
+++ Job #2: processing voxels 80206 to 105812; elapsed time=245.641
+++ Job #3: processing voxels 105813 to 131182; elapsed time=245.657
+++ Job #4: processing voxels 131183 to 154627; elapsed time=245.677
+++ Job #5: processing voxels 154628 to 186579; elapsed time=245.692
+++ Job #6: processing voxels 186580 to 221183; elapsed time=245.708
+++ Job #0: processing voxels 0 to 51426; elapsed time=245.730
+++ voxel loop:0123456789.0123456789.0123456789.0123456789.012345678++ Job #3 finished; elapsed time=3538.490
+9.++ Job #2 finished; elapsed time=3562.556
+
+++ Job #0 waiting for children to finish; elapsed time=3564.979
+++ Job #4 finished; elapsed time=3591.007
+++ Job #1 finished; elapsed time=3591.007
+++ Job #5 finished; elapsed time=3592.628
+++ Job #6 finished; elapsed time=3601.653
+++ Job #0 now finishing up; elapsed time=3601.670
+++ Wrote cbucket to ./coefout+orig.BRIK
+++ Wrote bucket dataset into ./statout+orig.BRIK
+++ Program finished; elapsed time=3608.498

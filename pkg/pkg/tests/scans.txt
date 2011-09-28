@@ -1,0 +1,7 @@
+../epi/srscan01.nii
+../epi/srscan02.nii
+../epi/srscan03.nii
+../epi/srscan04.nii
+../epi/srscan05.nii
+../epi/srscan06.nii
+../epi/srscan07.nii

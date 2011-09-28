@@ -1,0 +1,7 @@
+../epi/MotNuisance_rscan01.txt
+../epi/MotNuisance_rscan02.txt
+../epi/MotNuisance_rscan03.txt
+../epi/MotNuisance_rscan04.txt
+../epi/MotNuisance_rscan05.txt
+../epi/MotNuisance_rscan06.txt
+../epi/MotNuisance_rscan07.txt

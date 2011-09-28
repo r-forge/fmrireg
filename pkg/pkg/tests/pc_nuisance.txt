@@ -1,0 +1,7 @@
+../epi/PCNuisance_rscan01.txt
+../epi/PCNuisance_rscan02.txt
+../epi/PCNuisance_rscan03.txt
+../epi/PCNuisance_rscan04.txt
+../epi/PCNuisance_rscan05.txt
+../epi/PCNuisance_rscan06.txt
+../epi/PCNuisance_rscan07.txt

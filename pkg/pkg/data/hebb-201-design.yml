@@ -1,0 +1,52 @@
+Design:
+  base-path: ~/data/HEBB/201
+  image-data:
+    path: epi
+    TR: 1.37
+    block-lengths: [ 100, 100, 100, 100, 100, 100 ]
+    images:
+    - strf201_epi_run1.nii
+    - strf201_epi_run2.nii
+    - strf201_epi_run3.nii
+    - strf201_epi_run4.nii
+    - strf201_epi_run5.nii
+    - strf201_epi_run6.nii    
+  table-data:
+    column-header:
+      covariates:
+      - TotCorrect
+      - SerCorrect
+      factors:
+      - seqnum
+      - repnum
+      block-factor: run
+      onsets: encodeOnsets
+      durations: 2
+    table-files:
+      path: behavioral
+      files:
+      - alldata_ext.txt
+GLM: 
+  name: glm1
+  base-path: ~/data/HEBB/201
+  design: this
+  mask: fid/global_mask.nii
+  
+
+
+#  GLT: 
+#    name: one_vs_two
+#    type: contrast
+#    factor: seqnum
+#    levels: [ 1, 2 ]
+#    weights: [ -1, 1 ]
+  
+  
+
+
+ 
+
+  
+  
+  
+  
