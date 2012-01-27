@@ -93,11 +93,15 @@ afni_hrf <- function(..., conv="gamma", onsets=NULL, durations=NULL, drop.unused
 
 
 
-hrf <- function(..., conv="gamma", onsets=NULL, durations=NULL, granularity=.1, height=NULL, drop.unused.levels=TRUE, subset=NULL) {
+hrf <- function(..., conv="gamma", onsets=NULL, durations=NULL, granularity=.1, height=NULL, drop.unused.levels=TRUE, subset=NULL, labelPrefix=NULL) {
 	varlist <- list(...)
 	
 	anames <- parse(text=match.call())
 	anames <- as.list(anames)[2:length(anames)]
+	
+	if (!is.null(labelPrefix)) {
+		anames <- paste(labelPrefix, "_", anames, sep="")
+	}
 		
 	.onsets <- onsets
 	.durations <- durations
