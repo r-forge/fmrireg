@@ -17,12 +17,21 @@ EventTerm <- function(..., subset=NULL) {
 
 
 
-EV <- function(vals, name, onsets, blockids = 1, durations = NULL) {
+EV <- function(vals, name, onsets, blockids = 1, durations = NULL, subset=NULL) {
+	if (!is.null(subset)) {
+		stopifnot(length(subset) == length(onsets) )
+	}
+	
+	if (is.null(subset)) {
+		subset <- rep(TRUE, length(onsets))
+	}
 	
 	if (inherits(vals, "ParametricBasis")) {
 		### omit name
-		return(EventBasis(vals, onsets, blockids, durations))		
+		return(EventBasis(vals, onsets, blockids, durations, subset))		
 	}
+	
+	
 	
 	if (is.matrix(vals) && NCOL(vals) == 1) {
 		vals <- vals[, 1, drop=TRUE]
@@ -64,8 +73,10 @@ EV <- function(vals, name, onsets, blockids = 1, durations = NULL) {
 	
 }
 
-EventBasis <- function(basis, onsets, blockids=1, durations=NULL) {
+EventBasis <- function(basis, onsets, blockids=1, durations=NULL, subset=NULL) {
 	stopifnot(inherits(basis, "ParametricBasis"))
+	
+	### todo check subset
 	ret <- .checkEVArgs(basis@x, onsets, blockids, durations)
 	
 	#name <- paste(basis@fun, "_", basis@argname, "_", postfix, sep="")

@@ -25,7 +25,8 @@ setClass("EventVector",
          representation(varname="character",
                         blockids="integer",
                         onsets="numeric",        
-                        durations="numeric"),
+                        durations="numeric",
+						subset="logical"),
          contains="VIRTUAL")
 
 
