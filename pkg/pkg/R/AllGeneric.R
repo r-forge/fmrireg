@@ -5,7 +5,7 @@ setGeneric("path",     function(x) standardGeneric("path"))
 setGeneric("filelist",     function(x, full.names) standardGeneric("filelist"))
 setGeneric("samples", function(x, global, start) standardGeneric("samples"))
 
-setGeneric("eval", function(x, subset) standardGeneric("eval"))
+#setGeneric("eval", function(x, subset) standardGeneric("eval"))
 setGeneric("params", function(x) standardGeneric("params"))
 
 setGeneric("onsets",  function(x) standardGeneric("onsets"))

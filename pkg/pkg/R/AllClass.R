@@ -167,7 +167,9 @@ setClass("SumToZeroContrast", contains="Contrast",
 	validity=function(object) {
 		if (!all(round(apply(object,2, sum),digits=4) == 0)) {
 			"all columns of a SumToZeroContrast must sum to 0."
-		} else {		
+		} else if (all(zapsmall(object) == 0)) {			
+			"all values are zero"
+		} else {
 			TRUE
 		}
 	})

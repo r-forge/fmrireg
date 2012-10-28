@@ -112,6 +112,7 @@ hrf <- function(..., conv="gamma", onsets=NULL, durations=NULL, granularity=.1, 
 		if (!is.null(.onsets)) {
 			onsets <- .onsets
 		}		
+		
 		if (!is.null(.durations)) {
 			durations <- .durations
 		}
@@ -119,19 +120,20 @@ hrf <- function(..., conv="gamma", onsets=NULL, durations=NULL, granularity=.1, 
 		if (is.null(.subset)) {
 			.subset <- rep(TRUE, length(onsets))				
 		} else {		
-			## todo proper error message
-			stopifnot(sum(.subset) > 1)
+			
+			if (sum(.subset) < 1) {
+				stop(paste("Error: provided subset contains no cases, aborting"))
+			}
+			#stopifnot(sum(.subset) > 1)
 		}
 		
 		
 		
 		
-		evs <- lapply(1:length(varlist), function(i) {
-							
-					EV(eval(varlist[[i]], data, enclos=parent.frame()), as.character(anames[[i]]), onsets, blockids, durations)
-				})
-		
-		
+		evs <- lapply(seq_along(varlist), function(i) {							
+				EV(base:::eval(varlist[[i]], envir=data, enclos=parent.frame()), as.character(anames[[i]]), onsets, blockids, durations)
+		})
+
 		
 		eterm <- do.call(EventTerm, evs)
 		## hack until I can figure out how to add extra arg to do.call
@@ -273,8 +275,7 @@ fmrireg <- function(formula, data, hrf.fun=HRF.GAMMA, block=NULL, durations=0, b
 		stop("need to provide onset vector on left side of formula, e.g. Onsets ~  a + b")
 	}
 	
-		
-	durations <- eval(substitute(durations), envir=data, enclos=parent.frame())
+	durations <- base:::eval(substitute(durations), envir=data, enclos=parent.frame())
 	
 	
 	variables <- extractVariables(.terms, data)

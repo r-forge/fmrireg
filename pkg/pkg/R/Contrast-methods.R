@@ -196,7 +196,7 @@ polyContrast <- function(term, over, where=TRUE, degree=1, valueMap=NULL) {
 	#count <- attr(term.cells, "count")		
 	#term.cells <- subset(term.cells, count > 0)
 		
-	keep <- eval(substitute(where), envir=term.cells)	
+	keep <- eval(substitute(where), envir=term.cells, enclos=parent.frame())	
 	reduced.term.cells <- subset(term.cells, keep)
 		
 	vals <- if (is.null(valueMap)) {

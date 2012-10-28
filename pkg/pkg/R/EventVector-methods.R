@@ -50,24 +50,27 @@ EV <- function(vals, name, onsets, blockids = 1, durations = NULL, subset=NULL) 
 	
 }
 
-.checkEVArgs <- function(vals, onsets, blockids, durations) {
+.checkEVArgs <- function(vals, onsets, blockids, durations=NULL) {
 	
-	ret <- list(vals=vals, onsets=onsets, blockids=blockids, durations=durations)
+	#ret <- list(vals=vals, onsets=onsets, blockids=blockids, durations=durations)
 	
 	
 	stopifnot(length(onsets) == length(vals))
 	
 	
 	if (is.null(durations) || length(durations) == 1) {
-		durations <- rep(0, length(onsets))
+		durations <- rep(durations, length(onsets))
 	}
 	
 	
 	stopifnot(length(durations) == length(vals))
 	
+	### just, no
+	## TODO fix me
 	if (length(blockids) != length(onsets)) {
 		blockids <- rep(blockids[1], length(onsets))
 	}
+	### just, no
 	
 	list(vals=vals, onsets=onsets, blockids=blockids, durations=durations)
 	
