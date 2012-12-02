@@ -165,9 +165,9 @@ setClass("Contrast", contains=c("matrix"))
 
 setClass("SumToZeroContrast", contains="Contrast",
 	validity=function(object) {
-		if (!all(round(apply(object,2, sum),digits=4) == 0)) {
+		if (!all(round(apply(object@.Data,2, sum),digits=4) == 0)) {
 			"all columns of a SumToZeroContrast must sum to 0."
-		} else if (all(zapsmall(object) == 0)) {			
+		} else if (all(zapsmall(object@.Data) == 0)) {			
 			"all values are zero"
 		} else {
 			TRUE
@@ -176,7 +176,7 @@ setClass("SumToZeroContrast", contains="Contrast",
 	
 setClass("SumToOneContrast", contains="Contrast",
 		validity=function(object) {
-			if (!all(round(apply(object,2, sum),digits=4) == 1)) {
+			if (!all(round(apply(object@.Data,2, sum),digits=4) == 1)) {
 				"all columns of a SumToOneContrast must sum to 1."
 			} else {		
 				TRUE

@@ -267,6 +267,11 @@ baseline <- function(N=5, basis=c("bs", "poly", "ns")[1], name=paste("Baseline_"
 
 fmrireg <- function(formula, data, hrf.fun=HRF.GAMMA, block=NULL, durations=0, blocklens=NULL, TR=NULL, drop.unused.levels=TRUE) {
 	stopifnot(inherits(formula, "formula"))
+	
+	if (nrow(data) == 0) {
+		stop("error: data argument has 0 rows")
+	}
+	
 	.terms <- .extractTerms(formula, data)
 	resp <- attr(.terms, "response")
 	stopifnot(resp > 0)

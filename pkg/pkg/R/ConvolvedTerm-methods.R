@@ -117,7 +117,7 @@ ConvolvedTerm <- function(eventTerm, hrf, blocklens, TR, start=NULL, granularity
 	}
 	
 	
-	if (use.multicore && require(multicore) && length(globons) > 100) {
+	if (use.multicore && require(multicore) && length(globons) > 20) {
 		print("using mclapply to convolve regressors")
 		.lapply <- mclapply
 	} else {
