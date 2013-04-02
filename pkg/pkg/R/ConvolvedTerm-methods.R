@@ -15,6 +15,13 @@ MatrixTerm <- function(varname, mat, blocklens, TR) {
 
 
 AFNITerm <- function(eventTerm, hrf, blocklens, TR) {
+	
+	### hack to handle subsets with  AFNI_HRF ##
+	#if (!(all(eventTerm@subset))) {
+	#	evs <- lapply(eventTerm@events, function(ev) ev[eventTerm@subset])
+	#	eventTerm <- do.call(EventTerm, evs)
+	#}
+	
 	globons <- .globalOnsets(eventTerm, blocklens, TR)
 	stopifnot(is(hrf, "AFNI_HRF"))
 	

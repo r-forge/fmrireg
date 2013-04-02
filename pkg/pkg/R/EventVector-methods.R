@@ -143,13 +143,13 @@ setMethod("[[", signature(x="EventTerm", i="numeric", j="missing"),
 
 setMethod("[", signature(x="EventFactor", i="logical", j="missing", drop="missing"),
 		function(x,i,j) {
-			EventFactor(elements(x)[i, drop=TRUE], name=name(x), onsets=onsets(x)[i], durations=durations(x)[i],
+			EventFactor(elements(x)[[1]][i], name=varname(x), onsets=onsets(x)[i], durations=durations(x)[i],
 					blockids=blockids(x)[i])
 		})
 
 setMethod("[", signature(x="EventFactor", i="numeric", j="missing", drop="missing"),
 		function(x,i,j) {
-			EventFactor(elements(x)[i, drop=TRUE], name=name(x), onsets=onsets(x)[i], durations=durations(x)[i],
+			EventFactor(elements(x)[[1]][i], name=varname(x), onsets=onsets(x)[i], durations=durations(x)[i],
 					blockids=blockids(x)[i])
 		})
 

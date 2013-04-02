@@ -46,7 +46,7 @@ EventHRF <- function(hrf, onset, amplitude=1, duration=0, span=20, granularity=.
 				
 	}
 
-    ehrf <- function(t) {
+    ehrf <- cmpfun(function(t) {
 		ret <- lapply(funlist, function(fun) fun(t))		
 	  
       vals <- if (nbasis(hrf) > 1) {
@@ -77,7 +77,7 @@ EventHRF <- function(hrf, onset, amplitude=1, duration=0, span=20, granularity=.
       #} else {
       #  vals
       #}
-    }
+    })
   }
     
    

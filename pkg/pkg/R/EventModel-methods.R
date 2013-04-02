@@ -52,14 +52,17 @@ createEventTerms <- function(.terms, variables, resp, etab, facnames, expmat) {
 }
 
 
-afni_hrf <- function(..., conv="gamma", onsets=NULL, durations=NULL, drop.unused.levels=TRUE) {
+afni_hrf <- function(..., conv="gamma", onsets=NULL, durations=NULL, drop.unused.levels=TRUE, subset=NULL) {
 	varlist <- list(...)
 	
 	anames <- parse(text=match.call())
 	anames <- as.list(anames)[2:length(anames)]
 	
+	
+	## not DRY
 	.onsets=onsets
 	.durations=durations
+	.subset <- subset
 	
 	f <- function(onsets, TR, blocklens, blockids, durations, data) {
 		
@@ -71,11 +74,28 @@ afni_hrf <- function(..., conv="gamma", onsets=NULL, durations=NULL, drop.unused
 			durations <- .durations
 		}
 		
+		if (is.null(.subset)) {
+			.subset <- rep(TRUE, length(onsets))				
+		} else {		
+			
+			if (sum(.subset) < 1) {
+				stop(paste("Error: provided subset contains no cases, aborting"))
+			}
+			
+		}
+		
 		evs <- lapply(1:length(varlist), function(i) {
 					EV(eval(varlist[[i]], data, enclos=parent.frame()), as.character(anames[[i]]), onsets, blockids, durations)
 				})
 		
 		eterm <- do.call(EventTerm, evs)
+		eterm@subset <- .subset
+		## hack alert
+		if (!(all(eterm@subset))) {
+			evs <- lapply(eterm@events, function(ev) ev[eterm@subset])
+			eterm <- do.call(EventTerm, evs)
+		}
+		## hack alert
 		
 		if (is.character(conv)) {
 			conv <- get_AFNI_HRF(conv)() 
@@ -102,7 +122,8 @@ hrf <- function(..., conv="gamma", onsets=NULL, durations=NULL, granularity=.1, 
 	if (!is.null(labelPrefix)) {
 		anames <- paste(labelPrefix, "_", anames, sep="")
 	}
-		
+	
+	## not DRY
 	.onsets <- onsets
 	.durations <- durations
 	.subset <- subset
@@ -124,7 +145,7 @@ hrf <- function(..., conv="gamma", onsets=NULL, durations=NULL, granularity=.1, 
 			if (sum(.subset) < 1) {
 				stop(paste("Error: provided subset contains no cases, aborting"))
 			}
-			#stopifnot(sum(.subset) > 1)
+			
 		}
 		
 		
