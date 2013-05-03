@@ -1,9 +1,9 @@
 
 library(gtools)
 library(numDeriv)
+library(compiler)
 
-
-create.HRF <- function(HRF, ...) {
+create.HRF <- cmpfun(function(HRF, ...) {
   .orig <- list(...)
 
   if (length(.orig) > 0) {
@@ -17,13 +17,13 @@ create.HRF <- function(HRF, ...) {
       HRF(t)
     }
   }
-}
+})
 
 create.HRF.Set <- function(...) {
 	hrflist <- list(...)
-  function(t) {
-    do.call("cbind", lapply(hrflist, function(fun) fun(t)))
-  }
+  	function(t) {
+    	do.call("cbind", lapply(hrflist, function(fun) fun(t)))
+  	}
 }
 
 

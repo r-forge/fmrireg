@@ -19,7 +19,7 @@ EventHRF <- function(hrf, onset, amplitude=1, duration=0, span=20, granularity=.
     ## single impulse event
     ehrf <- function(t) {
       hrf(t-onset)*amplitude
-    }
+  }
 	
 	### FAILS TO SCALE TO MAX_HEIGHT
       
@@ -28,6 +28,7 @@ EventHRF <- function(hrf, onset, amplitude=1, duration=0, span=20, granularity=.
     ### block event
     .onsets <- seq(onset, onset+duration, granularity)
     funlist <- lapply(.onsets, function(ons) {
+	  ## hmm why is this necessary?
       ons <- ons
       function(t) {
         hrf(t-ons)*amplitude
@@ -41,12 +42,10 @@ EventHRF <- function(hrf, onset, amplitude=1, duration=0, span=20, granularity=.
 				} else {
 					zapsmall(rowSums(do.call(cbind, ret)))
 				}
-		MAX_HEIGHT <- max(vals)
-		#print(paste("MAX_HEIGHT", MAX_HEIGHT))
-				
+		MAX_HEIGHT <<- max(vals)				
 	}
 
-    ehrf <- cmpfun(function(t) {
+    ehrf <- function(t) {
 		ret <- lapply(funlist, function(fun) fun(t))		
 	  
       vals <- if (nbasis(hrf) > 1) {
@@ -77,7 +76,7 @@ EventHRF <- function(hrf, onset, amplitude=1, duration=0, span=20, granularity=.
       #} else {
       #  vals
       #}
-    })
+    }
   }
     
    
